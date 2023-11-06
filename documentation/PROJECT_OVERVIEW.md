@@ -1,6 +1,6 @@
 # Project Overview
 
-This project aims to provide a platform for users to practise git
+修复了一个小错误
 
 commit 1
 
