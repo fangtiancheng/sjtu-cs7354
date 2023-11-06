@@ -1,0 +1,74 @@
+# 任务一
+git checkout -b feature-newFunc
+git add ./mydiary/diary.txt
+git commit -m "Added diary entry for feature work"
+git add ./mydiary/diary.txt
+git commit -m "Added another diary entry for feature work"
+git switch main
+git merge feature-newFunc
+
+# 任务二
+# 2.1 准备工作
+git checkout -b experiment
+git add ./tests/node.txt
+git commit -m "Added new approach details."
+git add ./tests/node.txt
+git commit -m "branch experiment commit 2"
+# 2.2 实现
+git log # 复制上次commit的ID
+git switch main
+git cherry-pick ${上次commit的ID}
+git push
+
+# 任务三
+# 3.1 准备工作
+git checkout -b dev
+git add ./backend/project.txt
+git commit -m "branch dev commit 1"
+git add ./backend/project.txt
+git commit -m "Add new content"
+git add ./backend/project.txt
+git commit -m "Some content was added repeatedly"
+git add ./backend/project.txt
+git commit -m "Mistakenly added irrelevant content"
+# 3.2 实现
+git revert HEAD^
+# accept incoming change at ./backend/project.txt
+git add ./backend/project.txt
+git commit -m "Add new content"
+git push --set-upstream origin dev
+
+# 任务四
+git switch main
+git checkout -b feature-upload
+git switch main
+git add ./frontend/styles.css
+git commit -m "change body font to 'Times New Roman'"
+git switch feature-upload
+git diff main
+git merge main
+
+# 任务五
+# 5.1 准备工作
+git switch main
+git checkout -b documentation
+git add ./documentation/INSTALL_GUIDE.md
+git commit -m "add INSTALL_GUIDE"
+git add ./documentation/PROJECT_OVERVIEW.md
+git commit -m "commit 1 of PROJECT_OVERVIEW"
+git add ./documentation/PROJECT_OVERVIEW.md
+git commit -m "commit 2 of PROJECT_OVERVIEW"
+git add ./documentation/CONTRIBUTING_GUIDE.md
+git commit -m "add CONTRIBUTING_GUIDE"
+git add ./documentation/PROJECT_OVERVIEW.md
+git commit -m "fix a little bug in PROJECT_OVERVIEW"
+# 5.2 实现
+git rebase HEAD~5
+#pick 595afc3 add CONTRIBUTING_GUIDE
+#pick 5c2fe1f commit 1 of PROJECT_OVERVIEW
+#squash f85b1df commit 2 of PROJECT_OVERVIEW
+#pick 206c01a add INSTALL_GUIDE
+#pick c4f4a64 fix a little bug in PROJECT_OVERVIEW
+git switch main
+git merge documentation
+git push
